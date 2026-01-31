@@ -1,11 +1,10 @@
 # Changelog
-
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 2.0.0 - 2026-01-31
 ### Added
 - Add contact details to Swaggy C config file
 - Add Python and Ruby tests
@@ -16,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgrade Swaggy C to 5.1.0
 - Upgrade OpenAPI Generator to 7.18.0
 - Handover repo to OpenAPI Clients Factory project
-- Disable Javascript test due to BABEL_PARSER_ERROR #3
+- Disable Javascript test due to BABEL_PARSER_ERROR [#3]
 
 ## 1.1.0 - 2022-07-01
 ### Changed
