@@ -1,7 +1,7 @@
 ---
 spec_uri: >-
   https://raw.githubusercontent.com/pinterest/api-description/refs/tags/v5.23.0/v5/openapi.yaml
-version: 2.0.0
+version: 2.0.1-pre.0
 contact:
   name: OpenAPI Clients Factory
   url: https://github.com/oapicf/pinterest-sdk
